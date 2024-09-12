@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
@@ -18,19 +20,13 @@ import com.fstg.painCare.service.facade.RoleService;
 import com.fstg.painCare.service.facade.UserService;
 
 @Service
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserServiceImpl implements UserService {
 
 	private UserDao userDao;
 	private ModelMapper modelMapper;
 	private RoleService roleService;
-	
-	public UserServiceImpl(UserDao userDao, ModelMapper modelMapper, RoleService roleService) {
-		super();
-		this.userDao = userDao;
-		this.modelMapper = modelMapper;
-		this.roleService = roleService;
-		
-	}
 
 	@Override
 	public List<UserDto> findAll() {

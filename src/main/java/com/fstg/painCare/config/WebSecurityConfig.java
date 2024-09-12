@@ -2,6 +2,7 @@ package com.fstg.painCare.config;
 
 import java.util.Arrays;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,12 +26,11 @@ import com.fstg.painCare.config.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableMethodSecurity
+@AllArgsConstructor
 public class WebSecurityConfig {
-	
-	@Autowired
+
 	UserDetailsServiceImpl userDetailsService;
 
-	@Autowired
 	private AuthEntryPointJwt unauthorizedHandler;
 	
 	// Configuration du filtre pour le jeton d'authentification JWT

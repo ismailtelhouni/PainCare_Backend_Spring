@@ -1,0 +1,62 @@
+spring:
+  profiles:
+    active: build
+  datasource:
+    url: "jdbc:h2:mem:testdb"
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: none
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+Pain-care:
+  jwtSecret: "==========Ismail====PainCare=Spring====Lahoucine=========="
+  jwtExpirationMs: 20240000
+upload:
+  dir: "C://Users//hp//Documents//workspace-spring-tool-suite-4-4.20.0.RELEASE//PainCare//src//main//resources//static//image"
+
+
+---
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: "jdbc:mysql://mysqldb:3306/pain_care"
+    username: pain_care_user
+    password: pain_care_password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+
+logging:
+  level:
+    org:
+      springframework: DEBUG
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: trace
+    ROOT: info
+
+Pain-care:
+  jwtSecret: "==========Ismail====PainCare=Spring====Lahoucine=========="
+  jwtExpirationMs: 20240000
+upload:
+  dir: "C://Users//hp//Documents//workspace-spring-tool-suite-4-4.20.0.RELEASE//PainCare//src//main//resources//static//image"

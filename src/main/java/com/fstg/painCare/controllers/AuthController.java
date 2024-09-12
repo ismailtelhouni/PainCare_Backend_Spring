@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,23 +37,18 @@ import com.fstg.painCare.shared.ErrorMessage;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
+@AllArgsConstructor
+@NoArgsConstructor
 public class AuthController {
-	
-	
-	
-	@Autowired
+
 	private AuthenticationManager authenticationManager;
-	
-	@Autowired
+
 	private UserDao userDao;
-	
-	@Autowired
+
 	private FemmeService femmeService;
-	
-  	@Autowired
+
   	private PasswordEncoder encoder;
-  	
-    @Autowired
+
     private JwtUtils jwtUtils;
     
     @PostMapping("/login")

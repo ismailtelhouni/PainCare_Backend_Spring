@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
@@ -18,18 +20,13 @@ import com.fstg.painCare.service.facade.FemmeService;
 import com.fstg.painCare.service.facade.UserService;
 
 @Service
+@AllArgsConstructor
+@NoArgsConstructor
 public class FemmeServiceImpl implements FemmeService {
 
 	private FemmeDao femmeDao;
 	private UserService userService;
 	private ModelMapper modelMapper;
-	
-	public FemmeServiceImpl(FemmeDao femmeDao, ModelMapper modelMapper , UserService userService) {
-		super();
-		this.femmeDao = femmeDao;
-		this.modelMapper = modelMapper;
-		this.userService = userService;
-	}
 
 	@Override
 	public List<FemmeDto> findAll() {

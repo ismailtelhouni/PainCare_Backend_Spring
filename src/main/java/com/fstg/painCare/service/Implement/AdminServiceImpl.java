@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
+@NoArgsConstructor
 public class AdminServiceImpl implements AdminService {
 
 	private AdminDao adminDao;

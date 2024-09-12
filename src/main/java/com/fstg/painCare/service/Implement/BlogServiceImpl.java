@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
@@ -21,19 +22,12 @@ import com.fstg.painCare.models.FemmeEntity;
 import com.fstg.painCare.service.facade.BlogService;
 
 @Service
+@AllArgsConstructor
+@NoArgsConstructor
 public class BlogServiceImpl implements BlogService {
 
 	private BlogDao blogDao;
 	private ModelMapper modelMapper;
-	
-	@Value("${upload.dir}") // Specify the directory where images will be stored
-    private String uploadDir;
-	
-	public BlogServiceImpl(BlogDao blogDao, ModelMapper modelMapper) {
-		super();
-		this.blogDao = blogDao;
-		this.modelMapper = modelMapper;
-	}
 
 	@Override
 	public List<BlogDto> findAll() {

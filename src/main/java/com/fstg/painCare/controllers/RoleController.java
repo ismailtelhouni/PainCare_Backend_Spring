@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +23,11 @@ import com.fstg.painCare.service.facade.RoleService;
 
 @RestController
 @RequestMapping("roles")
+@AllArgsConstructor
+@NoArgsConstructor
 public class RoleController {
 
 	private RoleService roleService;
-
-	public RoleController(RoleService roleService) {
-		super();
-		this.roleService = roleService;
-	}
 	
 	@GetMapping("")
 	public ResponseEntity<List<RoleDto>> findAll(){

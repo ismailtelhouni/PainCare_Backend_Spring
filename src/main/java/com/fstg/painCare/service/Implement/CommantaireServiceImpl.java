@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,7 @@ import com.fstg.painCare.service.facade.FemmeService;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Service
 public class CommantaireServiceImpl implements CommantaireService{
 

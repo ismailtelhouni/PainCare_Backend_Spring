@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,7 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
+@NoArgsConstructor
 public class DiagnosticServiceImpl implements DiagnosticService {
 
 	private DiagnosticDao diagnosticDao;

@@ -1,0 +1,50 @@
+version: '3.9'
+name: 'pain-care'
+services:
+  mysqldb:
+    image: mysql:8.0.13
+    restart: always
+    environment:
+      MYSQL_DATABASE: pain_care
+      MYSQL_USER: pain_care_user
+      MYSQL_PASSWORD: pain_care_password
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - pain_care_volume:/var/lib/mysql
+    container_name: mysqldb
+  phpmyadmindb:
+    depends_on:
+      - mysqldb
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8181:80"
+    environment:
+      PMA_HOST: mysqldb
+      MYSQL_ROOT_PASSWORD: root_password
+  pain-care-backend:
+    image: pain-care-backend:latest
+    restart: always
+    ports:
+      - "8282:8080"
+    container_name: pain-care-backend
+    depends_on:
+      - mysqldb
+    entrypoint: ["./wait-for-it.sh", "mysqldb:3306", "--", "java", "-jar", "/app.jar"]
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_USER: pain_care_user
+      MYSQL_PASSWORD: pain_care_password
+      MYSQL_PORT: 3306
+  pain-care-frontend:
+    image: pain-care-frontend:latest
+    restart: always
+    ports:
+      - "4200:80"
+    container_name: pain-care-frontend
+    depends_on:
+      - pain-care-backend
+volumes:
+  pain_care_volume:

@@ -122,6 +122,35 @@
 	            <version>3.10.0.2594</version>
 	        </plugin>
 		</plugins>
+		<finalName>pain-care-backend</finalName>
 	</build>
+	<profiles>
+		<profile>
+			<id>build-image</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<configuration>
+							<image>
+								<name>pain-care-backend</name>
+							</image>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>build-image</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<spring.profiles.active>build</spring.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
